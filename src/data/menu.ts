@@ -1,6 +1,5 @@
-// PLACEHOLDER CONTENT. Menu, prices and photos must be supplied by the owner
-// (see project plan: do not copy from Grab or third-party listings).
-// Only drinks seen in public Instagram posts are listed; price: null renders as "Price to be confirmed".
+// Menu content. Drink names come from the shop's public mentions; prices are still
+// unconfirmed (price: null renders as "₱ —"). Replace with the owner's real menu.
 
 export type MenuItem = {
   id: string;
@@ -21,7 +20,12 @@ export const menu: MenuCategory[] = [
     name: "Signature drinks",
     items: [
       { id: "black-sesame-latte", name: "Black Sesame Latte", price: null },
+      { id: "black-sesame-oat-latte", name: "Black Sesame Oat Latte", price: null },
+      { id: "hot-spanish-oat-latte", name: "Hot Spanish Oat Latte", price: null },
       { id: "sweet-kanella", name: "Sweet Kanella", price: null },
+      { id: "sunburn", name: "Sunburn", price: null },
+      { id: "esprava", name: "Esprava", price: null },
+      { id: "cinnamon-coffee", name: "Cinnamon Coffee", price: null },
     ],
   },
 ];
@@ -29,5 +33,7 @@ export const menu: MenuCategory[] = [
 export const shop = {
   name: "Ñuwave Specialty Coffee",
   location: "Jaro, Iloilo City",
+  address: "Fajardo cor. Libertad St., Jaro, Iloilo City",
+  hours: "11am – 1am, daily",
   instagram: "nuwavecoffeeph",
 };

@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { SlipFooter } from "@/components/SlipFooter";
 import { SlipHeader } from "@/components/SlipHeader";
-import { menu, shop } from "@/data/menu";
+import { menu } from "@/data/menu";
 
 export default function Home() {
-  const preview = menu.flatMap((c) => c.items).slice(0, 3);
+  const preview = menu.flatMap((c) => c.items).slice(0, 4);
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-5 py-10">
       <div className="slip-wrap">
@@ -27,11 +28,7 @@ export default function Home() {
           >
             View the full menu
           </Link>
-          <p className="mt-6 border-t-2 border-dashed border-rule pt-4 text-sm text-ink-soft">
-            <a className="underline underline-offset-4" href={`https://instagram.com/${shop.instagram}`}>
-              @{shop.instagram}
-            </a>
-          </p>
+          <SlipFooter note="Order at the counter or from your table." />
         </div>
       </div>
     </main>

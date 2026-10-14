@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { menu } from "@/data/menu";
+import { SlipFooter } from "./SlipFooter";
 import { SlipHeader } from "./SlipHeader";
 
 const peso = new Intl.NumberFormat("en-PH", { style: "currency", currency: "PHP" });
@@ -101,11 +102,13 @@ export function MenuOrder({ table }: { table?: string }) {
             </section>
           ))}
 
-          <p className="mt-6 border-t-2 border-dashed border-rule pt-4 text-sm text-ink-soft">
-            {table
-              ? `Orders and payment are handled by our staff. Show your slip to them at table ${table}.`
-              : "Scan the code on your table to build a slip, or order at the counter."}
-          </p>
+          <SlipFooter
+            note={
+              table
+                ? `Orders and payment are handled by our staff. Show your slip to them at table ${table}.`
+                : "Scan the code on your table to build a slip, or order at the counter."
+            }
+          />
         </div>
       </div>
 
