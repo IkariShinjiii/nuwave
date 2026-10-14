@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ñuwave Specialty Coffee
 
-## Getting Started
+Website and table-QR menu for Ñuwave Specialty Coffee, Fajardo cor. Libertad St., Jaro, Iloilo City.
+Live: https://nuwave-blond.vercel.app
 
-First, run the development server:
+Customers scan a QR code on their table, browse the menu on their phone, build a personal "slip" and show it to staff.
+Ordering and payment stay with the shop's POS and QR Ph device; nothing is sent or paid on the site.
+
+## Routes
+
+- `/` home
+- `/menu` public menu
+- `/menu/<table>` table menu (target of the QR codes)
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Stack: Next.js 16, Tailwind 4, TypeScript.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing the menu and shop info
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Everything lives in `src/data/menu.ts`. A `price` of `null` shows "₱ —" until the owner confirms it.
 
-## Learn More
+## Table QR codes
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/qr.mjs https://nuwave-blond.vercel.app 10
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Writes `qr/table-1.svg` … `qr/table-10.svg` (git-ignored). Regenerate if the domain changes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploys
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel deploys every push to `main`. Pull requests get preview deployments. Work is tracked in GitHub issues; open a PR per issue and reference it (`Closes #n`).
