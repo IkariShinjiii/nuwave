@@ -29,20 +29,22 @@ export function MenuOrder({ table }: { table?: string }) {
 
   return (
     <>
-      <nav
-        aria-label="Menu categories"
-        className="sticky top-0 z-10 -mx-5 mb-5 flex gap-2 overflow-x-auto bg-roast/95 px-5 py-3"
-      >
-        {menu.map((cat) => (
-          <a
-            key={cat.id}
-            href={`#cat-${cat.id}`}
-            className="shrink-0 rounded-full border border-line px-4 py-2 text-sm text-cream transition-colors hover:border-crema"
-          >
-            {cat.name}
-          </a>
-        ))}
-      </nav>
+      {menu.length > 1 && (
+        <nav
+          aria-label="Menu categories"
+          className="sticky top-0 z-10 -mx-5 mb-5 flex gap-2 overflow-x-auto bg-roast/95 px-5 py-3"
+        >
+          {menu.map((cat) => (
+            <a
+              key={cat.id}
+              href={`#cat-${cat.id}`}
+              className="shrink-0 rounded-full border border-line px-4 py-2 text-sm text-cream transition-colors hover:border-crema"
+            >
+              {cat.name}
+            </a>
+          ))}
+        </nav>
+      )}
 
       <div className="slip-wrap">
         <div className="slip feed">

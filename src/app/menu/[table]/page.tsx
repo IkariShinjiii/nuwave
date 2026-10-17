@@ -13,7 +13,7 @@ async function TableMenu({ params }: Pick<PageProps<"/menu/[table]">, "params">)
 // Target of the table QR codes: /menu/<table>. Orders are placed with staff / the POS (scope A).
 export default function TableMenuPage({ params }: PageProps<"/menu/[table]">) {
   return (
-    <main className="mx-auto max-w-md px-5 pb-32">
+    <main className="mx-auto max-w-md px-5 pt-4 pb-32">
       <Suspense fallback={<div className="min-h-screen" />}>
         <TableMenu params={params} />
       </Suspense>
