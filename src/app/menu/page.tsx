@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: `Menu | ${shop.name}` };
 
 export default function MenuPage() {
   return (
-    <main className="mx-auto max-w-md px-5 pb-16">
+    <main className="mx-auto max-w-md px-5 pt-4 pb-16">
       <MenuOrder />
     </main>
   );

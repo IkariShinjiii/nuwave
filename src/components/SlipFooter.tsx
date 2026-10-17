@@ -1,4 +1,5 @@
 import { shop } from "@/data/menu";
+import { OpenNow } from "./OpenNow";
 
 export function SlipFooter({ note }: { note: string }) {
   return (
@@ -6,7 +7,10 @@ export function SlipFooter({ note }: { note: string }) {
       <p>{note}</p>
       <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1">
         <dt className="font-semibold text-ink">Open</dt>
-        <dd>{shop.hours}</dd>
+        <dd>
+          {shop.hours}
+          <OpenNow />
+        </dd>
         <dt className="font-semibold text-ink">Find us</dt>
         <dd>{shop.address}</dd>
         <dt className="font-semibold text-ink">Instagram</dt>
