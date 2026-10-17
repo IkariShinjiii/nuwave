@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { menu } from "@/data/menu";
+import { menu, menuUpdated } from "@/data/menu";
 import { SlipFooter } from "./SlipFooter";
 import { SlipHeader } from "./SlipHeader";
 
 const peso = new Intl.NumberFormat("en-PH", { style: "currency", currency: "PHP" });
 
 type Qty = Record<string, number>;
+
+const asOf = new Intl.DateTimeFormat("en-PH", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(menuUpdated));
 
 const roundBtn =
   "size-11 rounded-full border-2 border-ink text-xl leading-none transition-colors hover:bg-ink hover:text-cream";
@@ -63,10 +65,14 @@ export function MenuOrder({ table }: { table?: string }) {
                 {cat.items.map((item, i) => (
                   <li key={item.id} style={{ "--i": i } as React.CSSProperties} className="line-in py-3">
                     <div className="flex items-end gap-2">
-                      <p className="text-lg leading-snug font-medium">{item.name}</p>
+                      <p className={`text-lg leading-snug font-medium ${item.soldOut ? "text-ink-soft line-through decoration-1" : ""}`}>
+                        {item.name}
+                      </p>
                       <span className="leader" aria-hidden />
                       <p className="shrink-0 text-base text-ink-soft">
-                        {item.price === null ? (
+                        {item.soldOut ? (
+                          <span className="stamp text-xs">Sold out</span>
+                        ) : item.price === null ? (
                           <span aria-label="Price to be confirmed">₱ —</span>
                         ) : (
                           peso.format(item.price)
@@ -74,7 +80,7 @@ export function MenuOrder({ table }: { table?: string }) {
                       </p>
                     </div>
                     {item.description && <p className="mt-0.5 text-sm text-ink-soft">{item.description}</p>}
-                    {table && (
+                    {table && !item.soldOut && (
                       <div className="mt-2 flex items-center gap-3">
                         {qty[item.id] ? (
                           <>
@@ -103,6 +109,8 @@ export function MenuOrder({ table }: { table?: string }) {
               </ul>
             </section>
           ))}
+
+          <p className="mt-6 text-xs text-ink-soft">Menu as of {asOf}. Prices marked ₱ — are still to be confirmed.</p>
 
           <SlipFooter
             note={
