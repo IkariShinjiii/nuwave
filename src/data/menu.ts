@@ -6,6 +6,7 @@ export type MenuItem = {
   name: string;
   description?: string;
   price: number | null; // PHP
+  soldOut?: boolean;
 };
 
 export type MenuCategory = {
@@ -13,6 +14,9 @@ export type MenuCategory = {
   name: string;
   items: MenuItem[];
 };
+
+// Date the drink names were last checked (ISO). Shown on the menu so guests know how fresh it is.
+export const menuUpdated = "2026-10-18";
 
 export const menu: MenuCategory[] = [
   {
